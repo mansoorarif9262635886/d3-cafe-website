@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Dil Dosti Duniya Cafe & Restro</title>
+    <meta name="description" content="Welcome to D3 Dil Dosti Duniya Cafe & Restro in Hajipur. Enjoy gourmet dining, specialty coffee, mocktails, and cozy ambiance.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts: Playfair Display for headings, Poppins & Lato for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 1. Header & Navigation (Sticky) -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#home" class="logo-link">
+                <img src="logo_d3.jpg" alt="D3 Dil Dosti Duniya Logo" class="logo-img">
+                <span class="logo-text" style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-left: 10px;">D3 Dil Dosti Duniya</span>
+            </a>
+            <nav class="nav-links" id="nav-links">
+                <a href="#menu">Explore Products</a>
+                <a href="#legacy">About Us</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#catering">Catering</a>
+                <a href="#outlets">Store Locator</a>
+                <a href="feedback.html">Feedback</a>
+            </nav>
+            <div class="header-right">
+                <a href="#cart" class="header-icon-btn" id="cart-icon-btn"><i class="fa fa-shopping-cart"></i><span class="cart-badge" id="cart-badge-count" style="display: none;">0</span></a>
+                <a href="#profile" class="header-icon-btn" id="profile-icon-btn"><i class="fa fa-user"></i></a>
+                <a href="#menu" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Order Online</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Gourmet Delights & Perfect Brews</h1>
+            <p class="subheadline">Experience the flavor celebration at D3 Dil Dosti Duniya Cafe & Restro</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-secondary-outline">Explore Menu</a>
+                <a href="#menu" class="btn btn-primary">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Legacy (About) Snippet -->
+    <section id="legacy" class="legacy-section">
+        <div class="container text-center">
+            <h2 class="section-title">Our Story</h2>
+            <div class="title-divider"></div>
+            <p class="section-subtitle">At D3 Dil Dosti Duniya Cafe & Restro, we believe in celebrating friendship, food, and fun. Located in the heart of Hajipur, we serve a delightful range of specialty shakes, mocktails, continental fusions, gourmet pizzas, and cozy vibes, making it the perfect hangout spot for you and your circle.</p>
+        </div>
+    </section>
+
+    <!-- 3. Main Content: Menu Showcase & Highlights -->
+    <section id="menu-showcase" class="showcase-section bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Delights</h2>
+            <div class="title-divider"></div>
+            
+            <div class="grid-layout" id="featured-delights-grid">
+                <!-- Highlight Card 1 -->
+                <button class="grid-card" data-category="Beverages">
+                    <img src="images/drink.png" alt="Drink">
+                    <div class="card-overlay">
+                        <h3>Drink</h3>
+                    </div>
+                </button>
+                <!-- Highlight Card 2 -->
+                <button class="grid-card" data-category="Pasta & Pizza">
+                    <img src="images/pizza.png" alt="Pizza">
+                    <div class="card-overlay">
+                        <h3>Pizza</h3>
+                    </div>
+                </button>
+                <!-- Highlight Card 3 -->
+                <button class="grid-card" data-category="Sandwiches">
+                    <img src="images/sandwich.png" alt="Sandwich">
+                    <div class="card-overlay">
+                        <h3>Sandwich</h3>
+                    </div>
+                </button>
+                <!-- Highlight Card 4 -->
+                <button class="grid-card" data-category="Rice & Biryani">
+                    <img src="images/biryani.png" alt="Biryani">
+                    <div class="card-overlay">
+                        <h3>Biryani</h3>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Menu Section (Dynamic) -->
+    <section id="menu" class="full-menu-section">
+        <div class="container">
+            <h2 class="section-title text-center">Our Complete Menu</h2>
+            <div class="title-divider"></div>
+            <p class="text-center section-subtitle" style="margin-bottom: 2rem;">A journey through the finest flavors.</p>
+            
+            <div class="menu-categories" id="menu-categories">
+                <!-- Injected via JS -->
+            </div>
+            <div class="menu-grid" id="menu-grid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Testimonials / Customer Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title text-center">What Our Customers Say</h2>
+            <div class="title-divider"></div>
+            <div class="reviews-carousel-container">
+                <div class="reviews-track" id="reviews-track">
+                    <!-- Injected dynamically via JS -->
+                </div>
+                <div class="carousel-nav" id="carousel-nav">
+                    <!-- Dots injected dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3.5. Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title text-center">Ambience Gallery</h2>
+            <div class="title-divider"></div>
+            <p class="section-subtitle text-center">Take a virtual tour of D3 Dil Dosti Duniya Cafe & Restro. Experience our cozy interiors, warm lights, and vibrant space.</p>
+            
+            <!-- Filter Tabs -->
+            <div class="gallery-filters">
+                <button class="gallery-filter-btn active" data-filter="all">All</button>
+                <button class="gallery-filter-btn" data-filter="photo">Photos</button>
+                <button class="gallery-filter-btn" data-filter="video">Videos</button>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery Item 1 (Photo - Cafe Interior 1) -->
+                <div class="gallery-item photo" data-src="images/gallery_ambience_1.jpg" data-title="Cozy Dining Lounge">
+                    <img src="images/gallery_ambience_1.jpg" alt="Cozy Cafe D3 Interior" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon"><i class="fa fa-expand"></i></span>
+                        <h4>Cozy Dining Lounge</h4>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 (Photo - Cafe Event Setup) -->
+                <div class="gallery-item photo" data-src="images/gallery_ambience_2.jpg" data-title="Celebration & Events">
+                    <img src="images/gallery_ambience_2.jpg" alt="Cafe D3 Event Ambience" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon"><i class="fa fa-expand"></i></span>
+                        <h4>Celebration & Events</h4>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 (Photo - Cozy Corner) -->
+                <div class="gallery-item photo" data-src="images/gallery_ambience_3.jpg" data-title="Espresso Corner">
+                    <img src="images/gallery_ambience_3.jpg" alt="Cozy Corner Table" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon"><i class="fa fa-expand"></i></span>
+                        <h4>Espresso Corner</h4>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 (Photo - Bar Counter) -->
+                <div class="gallery-item photo" data-src="images/gallery_ambience_4.jpg" data-title="Premium Mocktail Bar">
+                    <img src="images/gallery_ambience_4.jpg" alt="Modern Mocktail Bar" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon"><i class="fa fa-expand"></i></span>
+                        <h4>Premium Mocktail Bar</h4>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 (Instagram Reel - Cafe Ambience) -->
+                <!-- Feel free to swap the data-src link below with any real Instagram Reel/Post URL -->
+                <div class="gallery-item video" data-src="https://www.instagram.com/p/C2_r8kivw3T/" data-title="D3 Cozy Ambience">
+                    <div class="video-thumbnail-container">
+                        <img src="images/gallery_ambience_1.jpg" alt="D3 Cozy Ambience" loading="lazy">
+                        <div class="video-indicator" style="background: rgba(225, 48, 108, 0.85);"><i class="fa-brands fa-instagram"></i></div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon"><i class="fa-brands fa-instagram"></i></span>
+                        <h4>D3 Cozy Ambience</h4>
+                    </div>
+                </div>
+                <!-- Gallery Item 6 (Instagram Reel - Premium Brews) -->
+                <!-- Feel free to swap the data-src link below with any real Instagram Reel/Post URL -->
+                <div class="gallery-item video" data-src="https://www.instagram.com/p/C3D5rC4ve5Q/" data-title="Artisanal Brews & Shakes">
+                    <div class="video-thumbnail-container">
+                        <img src="images/gallery_ambience_3.jpg" alt="Artisanal Brews" loading="lazy">
+                        <div class="video-indicator" style="background: rgba(225, 48, 108, 0.85);"><i class="fa-brands fa-instagram"></i></div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon"><i class="fa-brands fa-instagram"></i></span>
+                        <h4>Artisanal Brews & Shakes</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Width Banner: Catering -->
+    <section id="catering" class="banner-section" style="background-image: url('https://img.restaurantguru.com/rd76-interior-D3-Cafe-and-Restro-2023-04.jpg')">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h2>Catering & Events</h2>
+            <p>Elevate your private gatherings and corporate events with the premium catering of Cafe D3.</p>
+            <a href="#footer" class="btn btn-primary">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Store Locator Section -->
+    <section id="outlets" class="store-locator-section">
+        <div class="container">
+            <h2 class="section-title text-center">Store Locator</h2>
+            <div class="title-divider"></div>
+            <p class="section-subtitle text-center">Visit one of our premium outlets to experience Dil Dosti Duniya dining and cozy vibes.</p>
+            
+            <div class="locator-grid">
+                <div class="locator-info">
+                    <div class="branch-card active" data-map-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.757049870711!2d85.21365370000001!3d25.691448800000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5d435a8b35fd%3A0xae158072e09142be!2sCafe%20D3%20%26%20Restro!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin">
+                        <h4>Cafe D3 & Restro Hajipur</h4>
+                        <p><i class="fa fa-map-marker-alt"></i> Marai Road, Hajipur, Bihar 844101 (In front of Aakash Ganga TVS Agency)</p>
+                        <p><i class="fa fa-phone"></i> +91 90065 16677</p>
+                    </div>
+                </div>
+                <div class="locator-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.757049870711!2d85.21365370000001!3d25.691448800000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5d435a8b35fd%3A0xae158072e09142be!2sCafe%20D3%20%26%20Restro!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Footer -->
+    <footer id="footer" class="main-footer">
+        <div class="container footer-grid">
+            <!-- Locations -->
+            <div class="footer-column">
+                <h3>Locations & Contacts</h3>
+                <div class="location-group">
+                    <h4>Hajipur Main Outlet</h4>
+                    <p>Marai Road, Hajipur, Bihar</p>
+                    <p>Phone: +91 90065 16677</p>
+                </div>
+            </div>
+
+            <!-- Careers & Feedback -->
+            <div class="footer-column" id="press">
+                <h3>Careers & Feedback</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:careers@cafed3.in">careers@cafed3.in</a></li>
+                    <li><a href="mailto:feedback@cafed3.in">feedback@cafed3.in</a></li>
+                    <li><a href="mailto:info@cafed3.in">General Inquiries</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect With Us -->
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <p>Follow our journey on social media.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/cafe___d3" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="https://jsdl.in/RSL-SAD1781115749" target="_blank" class="btn btn-secondary-outline" style="padding: 5px 15px; font-size: 0.9rem;">Find us on JustDial</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cafe D3. All Rights Reserved.</p>
+            <p style="margin-top: 5px; font-size: 0.8rem; color: #555;">Mock E-Commerce Demo | <a href="admin.html" style="color: var(--accent); text-decoration: underline;">Manager Admin Portal</a></p>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="fa fa-shopping-cart"></i> Your Cart</h3>
+            <button class="close-cart-btn" id="close-cart-btn"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="cart-body" id="cart-items-container">
+            <!-- Rendered dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">₹0.00</span>
+            </div>
+            
+            <!-- Checkout Action Form -->
+            <div class="cart-checkout-form" id="cart-checkout-form">
+                <h4>Delivery Details</h4>
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label class="form-label" style="font-size: 0.8rem;" for="checkout-name">Name <span>*</span></label>
+                    <input type="text" id="checkout-name" class="form-input" style="padding: 8px 12px; font-size: 0.9rem;" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label class="form-label" style="font-size: 0.8rem;" for="checkout-phone">Phone Number <span>*</span></label>
+                    <input type="tel" id="checkout-phone" class="form-input" style="padding: 8px 12px; font-size: 0.9rem;" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label class="form-label" style="font-size: 0.8rem;" for="checkout-branch">Select Outlet <span>*</span></label>
+                    <select id="checkout-branch" class="form-input" style="padding: 8px 12px; font-size: 0.9rem;" required>
+                        <option value="Hajipur">Hajipur (Main Branch)</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label class="form-label" style="font-size: 0.8rem;" for="checkout-type">Service Type <span>*</span></label>
+                    <select id="checkout-type" class="form-input" style="padding: 8px 12px; font-size: 0.9rem;" required>
+                        <option value="Dine-in">Dine-in (Table)</option>
+                        <option value="Delivery">Home Delivery</option>
+                    </select>
+                </div>
+                <div class="form-group" id="checkout-table-group" style="margin-bottom: 10px;">
+                    <label class="form-label" style="font-size: 0.8rem;" for="checkout-table">Table Number <span>*</span></label>
+                    <input type="text" id="checkout-table" class="form-input" placeholder="e.g. Table 5" style="padding: 8px 12px; font-size: 0.9rem;">
+                </div>
+                <div class="form-group" id="checkout-address-group" style="margin-bottom: 10px; display: none;">
+                    <label class="form-label" style="font-size: 0.8rem;" for="checkout-address">Delivery Address <span>*</span></label>
+                    <textarea id="checkout-address" class="form-input" placeholder="Enter full address" rows="2" style="padding: 8px 12px; font-size: 0.9rem; resize: none;"></textarea>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" id="checkout-btn" style="width: 100%; border-radius: 4px; padding: 12px; font-size: 0.9rem;">Checkout</button>
+            <button class="btn btn-primary" id="place-order-btn" style="width: 100%; border-radius: 4px; padding: 12px; font-size: 0.9rem; display: none;">Place Order</button>
+        </div>
+    </div>
+
+    <!-- Auth / Profile Modal -->
+    <div class="modal-overlay" id="auth-modal-overlay">
+        <div class="auth-modal">
+            <button class="close-modal-btn" id="close-modal-btn"><i class="fa fa-times"></i></button>
+            
+            <!-- Auth Form Section (Unauthenticated) -->
+            <div id="auth-forms-container">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" id="tab-login">Login</div>
+                    <div class="modal-tab" id="tab-register">Register</div>
+                </div>
+                
+                <!-- Login form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="admin-form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" required placeholder="john (Customer) or admin (Manager)">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="john123 or admin123">
+                    </div>
+                    <div class="error-msg" id="login-error" style="color: #e74c3c; font-size: 0.85rem; margin-bottom: 15px; display: none;"></div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; padding:10px; border-radius:4px;">Sign In</button>
+                </form>
+                
+                <!-- Register form -->
+                <form id="register-form" class="auth-form">
+                    <div class="admin-form-group">
+                        <label for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" required placeholder="e.g. Alice Smith">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" required placeholder="Select username">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" required placeholder="Create password">
+                    </div>
+                    <div class="error-msg" id="register-error" style="color: #e74c3c; font-size: 0.85rem; margin-bottom: 15px; display: none;"></div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; padding:10px; border-radius:4px;">Create Account</button>
+                </form>
+            </div>
+
+            <!-- Profile Dashboard Section (Authenticated) -->
+            <div id="profile-dashboard-container" class="profile-dashboard">
+                <div class="profile-info-header">
+                    <div>
+                        <h3 id="user-display-name">Welcome Back!</h3>
+                        <span id="user-role-badge" class="status-badge status-completed" style="margin-top:5px;">Customer</span>
+                    </div>
+                    <button class="btn btn-secondary-outline" id="logout-btn" style="padding: 6px 12px; font-size: 0.8rem; border-color: #d1d5db; color: var(--text-main);">Logout</button>
+                </div>
+                
+                <div class="order-history-container">
+                    <h4>Your Recent Orders</h4>
+                    <div style="overflow-x: auto;">
+                        <table class="order-history-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-orders-body">
+                                <!-- Loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal Overlay -->
+    <div class="success-overlay" id="order-success-overlay">
+        <div class="success-modal">
+            <div class="success-icon" style="color: var(--accent-orange);">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 style="color: var(--primary);">Order Placed Successfully!</h3>
+            <p>Thank you for your order! Your order ID is <strong id="success-order-id" style="color: var(--accent-orange);">#ORD-1234</strong>. You can track its status under your Profile menu.</p>
+            <button class="btn btn-primary" id="success-close-btn" style="padding: 10px 30px; font-size: 0.95rem; border-radius: 6px;">Excellent</button>
+        </div>
+    </div>
+    <!-- Category Modal for Featured Delights -->
+    <div id="category-modal" class="modal">
+        <div class="modal-content">
+            <span id="modal-close" class="modal-close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-menu-grid" class="modal-grid"></div>
+        </div>
+    </div>
+
+    <!-- Floating Contact Actions Button -->
+    <div class="floating-contact-container" id="contact-fab-container">
+        <div class="contact-submenu" id="contact-submenu">
+            <a href="https://wa.me/919262635886" target="_blank" class="submenu-btn whatsapp-btn" title="Chat on WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="tel:9262635886" class="submenu-btn call-btn" title="Call Us">
+                <i class="fa fa-phone"></i>
+            </a>
+        </div>
+        <button class="contact-main-btn" id="contact-main-btn" title="Contact Us">
+            <i class="fa-solid fa-headset main-icon"></i>
+            <i class="fa fa-times close-icon" style="display: none;"></i>
+        </button>
+    </div>
+
+    <!-- Lightbox Modal for Gallery -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <button class="lightbox-prev" id="lightbox-prev"><i class="fa fa-chevron-left"></i></button>
+        <div class="lightbox-content-container">
+            <div id="lightbox-media-container"></div>
+            <h3 id="lightbox-title"></h3>
+        </div>
+        <button class="lightbox-next" id="lightbox-next"><i class="fa fa-chevron-right"></i></button>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="database.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
