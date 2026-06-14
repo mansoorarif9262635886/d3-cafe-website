@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Feedback | D3 Dil Dosti Duniya</title>
+    <meta name="description" content="We value your input! Share your dining or online ordering feedback with D3 Dil Dosti Duniya Cafe & Restro to help us serve you better.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts: Playfair Display for headings, Poppins & Lato for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background-color: var(--bg-light);">
+
+    <!-- 1. Header & Navigation (Sticky) -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="logo_d3.jpg" alt="D3 Dil Dosti Duniya Logo" class="logo-img">
+                <span class="logo-text" style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-left: 10px;">D3 Dil Dosti Duniya</span>
+            </a>
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html#menu">Explore Products</a>
+                <a href="index.html#legacy">About Us</a>
+                <a href="index.html#catering">Franchise</a>
+                <a href="index.html#outlets">Store Locator</a>
+                <a href="feedback.html" class="active" style="color: var(--accent-orange);">Feedback</a>
+            </nav>
+            <div class="header-right">
+                <a href="#cart" class="header-icon-btn"><i class="fa fa-shopping-cart"></i></a>
+                <a href="#profile" class="header-icon-btn"><i class="fa fa-user"></i></a>
+                <a href="index.html#order" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Order Online</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="feedback-hero">
+        <div class="container">
+            <h1>Feedback</h1>
+            <p class="section-subtitle" style="margin-top: 10px;">We value your input! Share your feedback with us to help us enhance your dining experience.</p>
+        </div>
+    </section>
+
+    <!-- 3. Feedback Form Container -->
+    <section class="feedback-container">
+        <div class="feedback-card">
+            <form id="feedback-form" novalidate>
+                
+                <!-- Rating Component -->
+                <div class="form-group">
+                    <label class="form-label rating-label">Rate our service <span>*</span></label>
+                    <div class="rating-emojis" id="rating-container">
+                        <button type="button" class="rating-btn" data-rating="1" aria-label="Bad">
+                            <span class="emoji">😠</span>
+                            <span class="emoji-label">Bad</span>
+                        </button>
+                        <button type="button" class="rating-btn" data-rating="2" aria-label="Meh">
+                            <span class="emoji">😐</span>
+                            <span class="emoji-label">Meh</span>
+                        </button>
+                        <button type="button" class="rating-btn" data-rating="3" aria-label="Good">
+                            <span class="emoji">🙂</span>
+                            <span class="emoji-label">Good</span>
+                        </button>
+                        <button type="button" class="rating-btn" data-rating="4" aria-label="Awesome">
+                            <span class="emoji">😃</span>
+                            <span class="emoji-label">Awesome</span>
+                        </button>
+                        <button type="button" class="rating-btn" data-rating="5" aria-label="Loved it">
+                            <span class="emoji">😍</span>
+                            <span class="emoji-label">Loved it</span>
+                        </button>
+                    </div>
+                    <input type="hidden" name="rating" id="rating-value" required>
+                    <div class="error-msg" id="rating-error" style="color: #e74c3c; font-size: 0.85rem; margin-top: 5px; display: none;">Please select a rating.</div>
+                </div>
+
+                <!-- Personal Info Inputs -->
+                <div class="form-group">
+                    <label class="form-label" for="full-name">Full Name <span>*</span></label>
+                    <input type="text" id="full-name" name="fullName" class="form-input" placeholder="Enter your full name" required>
+                    <div class="error-msg" id="name-error" style="color: #e74c3c; font-size: 0.85rem; margin-top: 5px; display: none;">Full name is required.</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="mobile-number">Mobile Number <span>*</span></label>
+                    <input type="tel" id="mobile-number" name="mobileNumber" class="form-input" placeholder="Enter your mobile number" required>
+                    <div class="error-msg" id="mobile-error" style="color: #e74c3c; font-size: 0.85rem; margin-top: 5px; display: none;">Please enter a valid 10-digit mobile number.</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address <span>*</span></label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email address" required>
+                    <div class="error-msg" id="email-error" style="color: #e74c3c; font-size: 0.85rem; margin-top: 5px; display: none;">Please enter a valid email address.</div>
+                </div>
+
+                <!-- Branch Dropdown -->
+                <div class="form-group">
+                    <label class="form-label" for="branch">Select Branch <span>*</span></label>
+                    <select id="branch" name="branch" class="form-input" required>
+                        <option value="" disabled selected>Choose branch location</option>
+                        <option value="Hajipur">Hajipur (Main Branch)</option>
+                    </select>
+                    <div class="error-msg" id="branch-error" style="color: #e74c3c; font-size: 0.85rem; margin-top: 5px; display: none;">Please select a branch.</div>
+                </div>
+
+                <!-- Pill/Tag selectors -->
+                <div class="form-group">
+                    <label class="form-label">What stood out to you?</label>
+                    <div class="pills-container" id="tags-container">
+                        <div class="pill-tag" data-tag="Food Quality">Food Quality</div>
+                        <div class="pill-tag" data-tag="Service">Service</div>
+                        <div class="pill-tag" data-tag="Ambience">Ambience</div>
+                        <div class="pill-tag" data-tag="Timeliness">Timeliness</div>
+                        <div class="pill-tag" data-tag="Value for Money">Value for Money</div>
+                        <div class="pill-tag" data-tag="Customer Satisfaction">Customer Satisfaction</div>
+                    </div>
+                </div>
+
+                <!-- Message Text Area -->
+                <div class="form-group">
+                    <label class="form-label" for="message">Your Message <span>*</span></label>
+                    <textarea id="message" name="message" class="form-input" rows="5" placeholder="Tell us about your experience..." required style="resize: vertical;"></textarea>
+                    <div class="error-msg" id="message-error" style="color: #e74c3c; font-size: 0.85rem; margin-top: 5px; display: none;">Message is required.</div>
+                </div>
+
+                <!-- File Upload -->
+                <div class="form-group">
+                    <label class="form-label">Add Photos (Optional)</label>
+                    <div class="upload-btn-wrapper">
+                        <div class="upload-btn">
+                            <i class="fa fa-camera" style="font-size: 1.2rem;"></i>
+                            <span>Click here to upload photos</span>
+                        </div>
+                        <input type="file" id="photos-input" name="photos" accept="image/*" multiple>
+                    </div>
+                    <div class="preview-container" id="photo-preview-grid">
+                        <!-- Dynamic thumbnail previews go here -->
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 6px; padding: 15px; margin-top: 10px;">
+                    Submit Feedback
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Success Modal Overlay -->
+    <div class="success-overlay" id="success-overlay">
+        <div class="success-modal">
+            <div class="success-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Feedback Submitted!</h3>
+            <p>Thank you for sharing your experience. Your feedback has been routed to our branch management team for review.</p>
+            <a href="index.html" class="btn btn-primary" style="padding: 10px 30px; font-size: 0.95rem; border-radius: 6px;">Back to Home</a>
+        </div>
+    </div>
+
+    <!-- 4. Footer -->
+    <footer id="footer" class="main-footer">
+        <div class="container footer-grid">
+            <!-- Locations -->
+            <div class="footer-column" id="outlets">
+                <h3>Locations & Contacts</h3>
+                <div class="location-group">
+                    <h4>Hajipur Main Outlet</h4>
+                    <p>Marai Road, Hajipur, Bihar</p>
+                    <p>Phone: +91 90065 16677</p>
+                </div>
+            </div>
+
+            <!-- Careers & Feedback -->
+            <div class="footer-column" id="press">
+                <h3>Careers & Feedback</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:careers@cafed3.in">careers@cafed3.in</a></li>
+                    <li><a href="mailto:feedback@cafed3.in">feedback@cafed3.in</a></li>
+                    <li><a href="mailto:info@cafed3.in">General Inquiries</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect With Us -->
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <p>Follow our journey on social media.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/cafe___d3" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="https://jsdl.in/RSL-SAD1781115749" target="_blank" class="btn btn-secondary-outline" style="padding: 5px 15px; font-size: 0.9rem;">Find us on JustDial</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cafe D3. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="database.js"></script>
+    <script src="feedback.js"></script>
+</body>
+</html>
